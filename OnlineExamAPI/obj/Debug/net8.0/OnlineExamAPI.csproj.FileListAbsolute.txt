@@ -1,0 +1,8 @@
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.csproj.AssemblyReference.cache
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.AssemblyInfoInputs.cache
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.AssemblyInfo.cs
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.csproj.CoreCompileInputs.cache
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\proyec\examen-2025-ii-si784-u1-royservillanueva2004\OnlineExamAPI\obj\Debug\net8.0\OnlineExamAPI.sourcelink.json

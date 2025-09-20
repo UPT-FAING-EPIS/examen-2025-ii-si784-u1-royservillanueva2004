@@ -11,23 +11,27 @@ provider "azurerm" {
   features {}
 }
 
-# Configuración básica de variables
-variable "location" {
-  description = "Ubicación de los recursos de Azure"
-  default     = "East US"
+resource "azurerm_resource_group" "rg" {
+  name     = "online-exam-rg"
+  location = "East US"
 }
 
-variable "db_admin" {
-  description = "Administrador de la base de datos"
-  default     = "examadmin"
+resource "azurerm_app_service_plan" "plan" {
+  name                = "online-exam-plan"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
 }
 
-# Crear un resource group
-resource "azurerm_resource_group" "exam_rg" {
-  name     = "online-exam-platform-rg"
-  location = var.location
-}
-
-output "resource_group_name" {
-  value = azurerm_resource_group.exam_rg.name
+resource "azurerm_app_service" "app" {
+  name                = "online-exam-app"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  app_service_plan_id = azurerm_app_service_plan.plan.id
 }

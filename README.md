@@ -7,25 +7,20 @@ Plataforma web para creación, gestión y realización de exámenes en línea.
 
 ## Estructura del proyecto
 
-- `/backend`: API .NET Core
-- `/frontend`: Aplicación React
+- `/OnlineExamAPI`: API .NET Core
+- `/Online-Exam-Frontend`: Aplicación React
 - `/infrastructure`: Configuración de Terraform
 - `/.github/workflows`: Pipelines de CI/CD
 
 ## Configuración inicial
 
 ### Backend
-1. Navegar a la carpeta `backend`
+1. Navegar a la carpeta `OnlineExamAPI`
 2. Ejecutar `dotnet restore`
 3. Ejecutar `dotnet build`
+4. Ejecutar `dotnet run`
 
 ### Frontend
 1. Navegar a la carpeta `frontend`
 2. Ejecutar `npm install`
 3. Ejecutar `npm start`
-
-## Próximos pasos
-- [ ] Configurar la base de datos
-- [ ] Implementar autenticación
-- [ ] Crear primeros endpoints de API
-- [ ] Diseñar interfaz de usuario básica
