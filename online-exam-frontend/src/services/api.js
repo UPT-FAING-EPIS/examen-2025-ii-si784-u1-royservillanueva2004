@@ -9,11 +9,32 @@ const api = axios.create({
   },
 });
 
-// Interceptor para manejar errores
-api.interceptors.response.use(
-  (response) => response,
+// Interceptor para logging de requests
+api.interceptors.request.use(
+  (config) => {
+    console.log(`🔄 Enviando ${config.method?.toUpperCase()} a ${config.url}`);
+    console.log('📦 Datos:', config.data);
+    return config;
+  },
   (error) => {
-    console.error('API Error:', error.response?.data || error.message);
+    return Promise.reject(error);
+  }
+);
+
+// Interceptor para logging de responses
+api.interceptors.response.use(
+  (response) => {
+    console.log(`✅ Respuesta ${response.status} de ${response.config.url}`);
+    return response;
+  },
+  (error) => {
+    console.error('❌ Error API:', {
+      URL: error.config?.url,
+      Método: error.config?.method,
+      Status: error.response?.status,
+      Mensaje: error.response?.data || error.message,
+      Datos: error.config?.data
+    });
     return Promise.reject(error);
   }
 );
@@ -22,16 +43,26 @@ export const examAPI = {
   // Exámenes
   getExams: () => api.get('/exams'),
   getExam: (id) => api.get(`/exams/${id}`),
-  createExam: (examData) => api.post('/exams', examData),
-  deleteExam: (id) => api.delete(`/exams/${id}`),
-
-  // Preguntas
-  getQuestions: (examId) => api.get(`/questions/${examId}`),
-  createQuestion: (questionData) => api.post('/questions', questionData),
-
-  // Envíos de exámenes
-  submitExam: (submissionData) => api.post('/submissions', submissionData),
-  getResults: (userId) => api.get(`/submissions/${userId}`),
+  createExam: (examData) => {
+    // Formatear los datos para que coincidan con el backend
+    const formattedData = {
+      Title: examData.title,
+      Description: examData.description,
+      Duration: parseInt(examData.duration),
+      CreatedBy: examData.createdBy || "profesor@ejemplo.com",
+      Questions: examData.questions?.map(q => ({
+        Text: q.text,
+        Type: q.type,
+        Points: parseInt(q.points),
+        CorrectAnswer: q.correctAnswer,
+        Options: q.options || []
+      })) || []
+    };
+    
+    console.log('📤 Datos formateados para backend:', formattedData);
+    return api.post('/exams', formattedData);
+  },
+  deleteExam: (id) => api.delete(`/exams/${id}`)
 };
 
 export default api;

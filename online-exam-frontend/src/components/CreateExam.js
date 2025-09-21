@@ -6,7 +6,7 @@ const CreateExam = () => {
     title: '',
     description: '',
     duration: 30,
-    createdBy: 'teacher1',
+    createdBy: 'profesor@ejemplo.com',
     questions: []
   });
 
@@ -61,12 +61,33 @@ const CreateExam = () => {
 
   const submitExam = async () => {
     try {
-      await examAPI.createExam(examData);
+      console.log('📝 Intentando crear examen...');
+      
+      // Asegurar que los datos tengan el formato correcto
+      const examToSend = {
+        title: examData.title,
+        description: examData.description,
+        duration: parseInt(examData.duration),
+        createdBy: examData.createdBy,
+        questions: examData.questions.map(q => ({
+          text: q.text,
+          type: q.type,
+          points: parseInt(q.points),
+          correctAnswer: q.correctAnswer,
+          options: q.options.filter(opt => opt.trim() !== '') // Filtrar opciones vacías
+        }))
+      };
+
+      console.log('📤 Enviando examen:', examToSend);
+      
+      const response = await examAPI.createExam(examToSend);
+      console.log('✅ Examen creado:', response.data);
+      
       alert('Examen creado exitosamente!');
       window.location.href = '/';
     } catch (error) {
-      console.error('Error creating exam:', error);
-      alert('Error al crear el examen');
+      console.error('❌ Error al crear examen:', error);
+      alert('Error al crear el examen: ' + (error.response?.data || error.message));
     }
   };
 

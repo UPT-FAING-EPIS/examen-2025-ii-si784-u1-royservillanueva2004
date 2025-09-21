@@ -10,7 +10,7 @@ namespace OnlineExamAPI.Models
         public string? Text { get; set; }
         
         [Required]
-        public string? Type { get; set; } // "multiple", "truefalse", "open"
+        public string? Type { get; set; }
         
         [Required]
         [Range(1, 100)]
@@ -19,8 +19,9 @@ namespace OnlineExamAPI.Models
         [Required]
         public int ExamId { get; set; }
         
-        public List<string> Options { get; set; } = new List<string>();
+        public string OptionsJson { get; set; } = "[]"; // Solo guardar como JSON
         
         public string? CorrectAnswer { get; set; }
+
     }
 }

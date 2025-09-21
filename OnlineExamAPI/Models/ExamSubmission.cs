@@ -16,10 +16,11 @@ namespace OnlineExamAPI.Models
         
         public DateTime? EndTime { get; set; }
         
-        public Dictionary<int, string> Answers { get; set; } = new Dictionary<int, string>();
+        public string AnswersJson { get; set; } = "{}"; // Solo guardar como JSON
         
         public decimal Score { get; set; }
         
         public bool IsCompleted { get; set; }
+        
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineExamAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d148b2c072a362fda529f3b9058632df3f5e03c8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dacf6aa41f65ce0cd8ae0330523584b0700b30e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineExamAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineExamAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
